@@ -22,6 +22,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/profile',
         [App\Http\Controllers\AuthController::class, 'updateProfile']);
 
+    Route::get('/dashboard',
+        [App\Http\Controllers\DashboardController::class, 'index']);
+
     Route::get('/notifications',
         [App\Http\Controllers\NotificationController::class, 'index']);
 
