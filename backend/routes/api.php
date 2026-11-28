@@ -12,6 +12,17 @@ Route::post('/register',
 Route::post('/login',
     [App\Http\Controllers\AuthController::class, 'login']);
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout',
+        [App\Http\Controllers\AuthController::class, 'logout']);
+
+    Route::get('/profile',
+        [App\Http\Controllers\AuthController::class, 'profile']);
+
+    Route::put('/profile',
+        [App\Http\Controllers\AuthController::class, 'updateProfile']);
+});
+
 // =====================================================
 // ZONE DEV B : PROJETS, COLONNES, TACHES, COMMENTAIRES
 // =====================================================
