@@ -21,6 +21,17 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::put('/profile',
         [App\Http\Controllers\AuthController::class, 'updateProfile']);
+
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/users',
+            [App\Http\Controllers\UserController::class, 'index']);
+
+        Route::put('/users/{user}/role',
+            [App\Http\Controllers\UserController::class, 'updateRole']);
+
+        Route::delete('/users/{user}',
+            [App\Http\Controllers\UserController::class, 'destroy']);
+    });
 });
 
 // =====================================================
